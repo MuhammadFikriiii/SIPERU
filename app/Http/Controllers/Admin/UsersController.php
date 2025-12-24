@@ -13,7 +13,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -31,12 +32,16 @@ class UsersController extends Controller
     {
         $request->validate([
             'name'=> 'required|max:100',
-            'email'=> 'required|email|unique',
+            'email'=> 'required|email|unique:users,email',
             'password'=> 'required|min:8',
             'role' => 'required|in:admin,staff,mahasiswa',
             ]);
 
             User::create($request->all());
+
+            // dd($request->all());
+
+            return redirect()->route('admin.users.index')->with('success', 'User berhasil ditambahkan');
     }
 
     /**

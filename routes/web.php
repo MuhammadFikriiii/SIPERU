@@ -10,5 +10,6 @@ Route::prefix('admin')->name('admin.')->middleware('auth.admin')->group(function
 
 
 });
-Route::get('/users/create', [UsersController::class,'create'])->name('users.create');
-Route::get('/users', [UsersController::class,'store'])->name('users.store');
+Route::get('/admin/users', [UsersController::class,'index'])->name('admin.users');
+Route::get('/admin/users/create', [UsersController::class,'create'])->name('admin.users.create');
+Route::post('/admin/users', [UsersController::class,'store'])->name('admin.users.store');
