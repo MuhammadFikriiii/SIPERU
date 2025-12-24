@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\RuanganController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,3 +14,6 @@ Route::prefix('admin')->name('admin.')->middleware('auth.admin')->group(function
 Route::get('/admin/users', [UsersController::class,'index'])->name('admin.users');
 Route::get('/admin/users/create', [UsersController::class,'create'])->name('admin.users.create');
 Route::post('/admin/users', [UsersController::class,'store'])->name('admin.users.store');
+
+Route::get('/admin/ruangan/create', [RuanganController::class,'create'])->name('admin.ruangan.create');
+Route::post('/admin/ruangan', [RuanganController::class,'store'])->name('admin.ruangan.store');

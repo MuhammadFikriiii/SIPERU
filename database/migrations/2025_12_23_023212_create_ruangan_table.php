@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_ruangan', 20)->unique();
             $table->text('keterangan');
+            $table->string('foto_ruangan');
             $table->timestamps();
         });
     }
